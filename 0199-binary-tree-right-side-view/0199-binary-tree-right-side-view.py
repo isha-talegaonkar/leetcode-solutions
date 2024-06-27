@@ -13,6 +13,7 @@ class Solution:
         result = []
         
         while queue:
+            #length needs to be set before iterating through the queue
             length = len(queue)
             for i in range(length):
                 node = queue.popleft()
