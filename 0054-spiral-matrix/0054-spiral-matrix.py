@@ -8,7 +8,7 @@ class Solution:
             for i in range(left, right):
                 result.append(matrix[top][i])
             top += 1
-            
+
             for i in range(top, bottom):
                 result.append(matrix[i][right-1])
             right -= 1
