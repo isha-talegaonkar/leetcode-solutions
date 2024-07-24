@@ -1,7 +1,5 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if s == t:
-            return t
         if t == "":
             return ""
         
