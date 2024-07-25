@@ -15,7 +15,6 @@ class Solution:
         return prev
 
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
-
         count = 0
         ptr = head
 
