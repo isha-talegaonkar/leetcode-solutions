@@ -1,8 +1,9 @@
 class Solution:
-    def updateMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
         def valid(row, col):
             return 0 <= row < m and 0 <= col < n
         
+        matrix = [row[:] for row in mat]
         m = len(matrix)
         n = len(matrix[0])
         queue = deque()
