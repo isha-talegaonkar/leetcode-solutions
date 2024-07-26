@@ -23,5 +23,4 @@ class Solution:
                 backtrack(index+1, combination+char)
         
         backtrack(0, "")
-        
         return result
