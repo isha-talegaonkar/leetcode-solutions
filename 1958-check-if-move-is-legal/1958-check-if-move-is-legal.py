@@ -3,21 +3,27 @@ class Solution:
         numRows = len(board)
         numCols = len(board[0])
         
-        def dfs(row, col, dx, dy, distance, color):
-            if board[row][col] == color and distance > 1:
-                return True
-            if board[row][col] == color and distance == 1:
-                return False
-
-            nextX = row + dx
-            nextY = col + dy
-            if 0 <= nextX < numRows and 0 <= nextY < numCols and board[nextX][nextY] != '.':
-                if dfs(nextX, nextY, dx, dy, distance + 1, color):
-                    return True
+        directions = [[1,0], [0, 1], [-1, 0], [0, -1],
+                      [-1, 1], [1, -1], [1, 1], [-1, -1]
+                     ]
+        
+        def isLegal(row, col, d, color):
+            row = row + d[0]
+            col = col + d[1]
+            distance = 1
+            
+            while numRows > row >= 0 and numCols > col >= 0:
+                distance += 1
+                if board[row][col] == ".":
+                    return False
+                if board[row][col] == color: 
+                    return distance >= 3
+                
+                row, col = row + d[0], col + d[1]
             return False
-        directions = [[0, -1], [-1, -1], [-1, 0], [-1, 1],[0, 1], [1, 1],[1, 0], [1, -1]]
-        for dx, dy in directions:
-            if dfs(rMove, cMove, dx, dy, 0, color):
-                return True
 
+        for d in directions:
+            if (isLegal(rMove, cMove, d, color)):
+                return True
+        
         return False
