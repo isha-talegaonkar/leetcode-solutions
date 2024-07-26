@@ -17,7 +17,7 @@ class Solution:
         def backtrack(index, combination):
             if len(combination) == len(digits):
                 result.append(combination)
-                return 
+                return
             
             for char in chars[digits[index]]:
                 backtrack(index+1, combination+char)
