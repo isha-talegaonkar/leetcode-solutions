@@ -1,34 +1,29 @@
 class Solution:
-    def isValid(self, grid, r, c):
-        if len(grid) > r >= 0 and len(grid[0]) > c >= 0:
-            return True
-
-    def dfs(self, grid, r, c):
-        if self.isValid(grid, r, c) and grid[r][c] == "1":
-            grid[r][c] = "0"
-        else:
-            return
+    def dfs(self, row, col, grid):
+        if(row < 0 or col < 0 or row >= len(grid) or col >= len(grid[0]) or grid[row][col] != "1"):
+            return 
         
-        self.dfs(grid, r-1, c)
-        self.dfs(grid, r+1, c)
-        self.dfs(grid, r, c-1)
-        self.dfs(grid, r, c+1)
+        grid[row][col] = "0"
+        
+        self.dfs(row+1, col, grid)
+        self.dfs(row-1, col, grid)
+        self.dfs(row, col+1, grid)
+        self.dfs(row, col-1, grid)
         
     def numIslands(self, grid: List[List[str]]) -> int:
-
-        if not grid:
-            return 0
+        ROWS = len(grid)
+        COLS = len(grid[0])
         
-        numIslands = 0
-        numRows = len(grid)
-        numCols = len(grid[0])
-            
-        for r in range(numRows):
-            for c in range(numCols):
-                if grid[r][c] == "1":
-                    self.dfs(grid, r, c)
-                    numIslands += 1
-        return numIslands
+        numberOfIslands = 0
+           
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == "1":
+                    self.dfs(row, col, grid)
+                    numberOfIslands += 1
+        return numberOfIslands
+                    
+
     
 
         
