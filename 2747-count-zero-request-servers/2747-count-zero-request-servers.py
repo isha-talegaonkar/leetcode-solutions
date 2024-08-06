@@ -14,11 +14,11 @@ class Solution:
         right, left = 0, 0
         
         for i, start, end in queries:
-            while logs[right][1] <= end:
+            while logs[right][1] <= end and right<len(logs):
                 activeServers[logs[right][0]] = activeServers[logs[right][0]] + 1
                 right += 1
             
-            while logs[left][1] < start:
+            while logs[left][1] < start and left<len(logs):
                 activeServers[logs[left][0]] -= 1
                 if activeServers[logs[left][0]] == 0:
                     del activeServers[logs[left][0]]
