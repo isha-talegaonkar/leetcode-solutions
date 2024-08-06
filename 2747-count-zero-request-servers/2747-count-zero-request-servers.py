@@ -5,25 +5,24 @@ class Solution:
         queries = [(i, q - x, q) for i, q in enumerate(queries)]
 
         queries.sort(key = lambda x: x[1])
-
-        empty = [n] * len(queries)
         logs.sort(key=lambda x: x[1])
-        logs += [[0, float("inf")]]
+        logs.append([0, float("inf")]) 
+        inactiveServers = [n] * len(queries)
 
-        l, r = 0, 0
-        window = defaultdict(int)
+        left, right = 0, 0
+        activeServers = defaultdict(int)
 
         for i, start, end in queries:
-            while logs[r][1] <= end:
-                window[logs[r][0]] = window[logs[r][0]] + 1
-                r += 1
-            while logs[l][1] < start:
-                window[logs[l][0]] -= 1
-                if window[logs[l][0]] == 0: 
-                    del window[logs[l][0]]
+            while logs[right][1] <= end:
+                activeServers[logs[right][0]] = activeServers[logs[right][0]] + 1
+                right += 1
+            while logs[left][1] < start:
+                activeServers[logs[left][0]] -= 1
+                if activeServers[logs[left][0]] == 0: 
+                    del activeServers[logs[left][0]]
 
-                l += 1
+                left += 1
 
-            empty[i] -= len(window)
+            inactiveServers[i] -= len(activeServers)
 
-        return empty
+        return inactiveServers
