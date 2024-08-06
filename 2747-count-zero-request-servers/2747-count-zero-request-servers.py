@@ -1,6 +1,7 @@
+from collections import defaultdict
+
 class Solution:
     def countServers(self, n: int, logs: List[List[int]], x: int, queries: List[int]) -> List[int]:
-        result = []
         queries = [(i, q - x, q) for i, q in enumerate(queries)]
 
         queries.sort(key = lambda x: x[1])
