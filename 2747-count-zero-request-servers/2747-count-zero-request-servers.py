@@ -9,7 +9,7 @@ class Solution:
         logs.append([0, float("inf")])
         
         activeServers = defaultdict(int)
-        inactiveServers = [n] * len(queries)
+        inactiveServers = [0] * len(queries)
         
         right, left = 0, 0
         
@@ -24,7 +24,7 @@ class Solution:
                     del activeServers[logs[left][0]]
                 left += 1
             
-            inactiveServers[i] -= len(activeServers)
+            inactiveServers[i] = n - len(activeServers)
         
         return inactiveServers
             
