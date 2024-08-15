@@ -1,6 +1,6 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        hashmap = {}
+        hashmap = defaultdict(int)
         for i in range(len(numbers)):
             complement = target - numbers[i]
             
