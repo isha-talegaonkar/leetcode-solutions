@@ -18,7 +18,7 @@ class Solution:
         print("max: ", max_num, max_index)
         print("min: ", min_num, min_index)
         
-        res = len(nums) + min_index - (max_index+1)
+        res = min_index + (len(nums)  - max_index-1)
         
         if min_index > max_index:
             res -= 1
