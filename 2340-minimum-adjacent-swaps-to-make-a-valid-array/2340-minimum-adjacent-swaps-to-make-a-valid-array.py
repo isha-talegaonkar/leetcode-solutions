@@ -18,8 +18,13 @@ class Solution:
         print("max: ", max_num, max_index)
         print("min: ", min_num, min_index)
         
-        res = min_index + (len(nums)  - max_index-1)
+        #number of swaps to move the min number to the left: min_index
+        #number of swaps to move the max number to the right: (len(nums)  - max_index - 1)
+        #min swaps: left swaps + right swaps
         
+        res = min_index + (len(nums)  - max_index - 1)
+        
+        #edge case for when the min_index also gets swapped during the right_index swap
         if min_index > max_index:
             res -= 1
         
