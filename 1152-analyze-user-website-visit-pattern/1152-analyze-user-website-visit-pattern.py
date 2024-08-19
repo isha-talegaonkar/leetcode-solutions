@@ -7,10 +7,9 @@ class Solution:
             else:
                 userDict[username[i]] = [[timestamp[i], website[i]]]
         
-        print(userDict)
         patternScore = {}
         for user in userDict:
-            userDict[user].sort(key=lambda x: x[0])
+            userDict[user].sort()
             
             patterns = set(combinations([website for timestamp, website in userDict[user]], 3))
             
