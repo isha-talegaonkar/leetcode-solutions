@@ -1,3 +1,37 @@
+# class Solution:
+#     def totcount(self, start, end, s):
+#         stin = -1
+#         endin = -1
+#         flag = False
+        
+#         for i in range(start, end + 1):
+#             if s[i] == '|':
+#                 if not flag:
+#                     stin = i
+#                     flag = True
+#                 endin = i
+        
+#         c = 0
+#         for i in range(stin, endin + 1):
+#             if i != stin and i != endin:
+#                 if s[i] == '*':
+#                     c += 1
+        
+#         return c
+
+#     def platesBetweenCandles(self, s, queries):
+#         ans = []
+#         for query in queries:
+#             st = query[0]
+#             end = query[1]
+            
+#             count = self.totcount(st, end, s)
+#             if count < 0:
+#                 ans.append(0)
+#             else:
+#                 ans.append(count)
+        
+#         return ans
 class Solution:
     def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
         n = len(s)
