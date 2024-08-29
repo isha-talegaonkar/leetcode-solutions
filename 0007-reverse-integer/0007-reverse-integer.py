@@ -5,7 +5,6 @@ class Solution:
         res = 0
         
         while number:
-            # number, remainder = divmod(number, 10)
             remainder = number % 10
             number //= 10
             res = res * 10 + remainder
