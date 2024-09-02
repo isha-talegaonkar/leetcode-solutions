@@ -7,6 +7,7 @@ class Solution:
     
     def isPalindrome(self, s):
         return s == s[::-1]
+    
     def dfs(self, s, path, result):
         if not s:
             result.append(path)
