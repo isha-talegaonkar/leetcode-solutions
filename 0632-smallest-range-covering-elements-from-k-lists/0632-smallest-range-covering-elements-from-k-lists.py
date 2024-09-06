@@ -1,19 +1,23 @@
 class Solution:
     def smallestRange(self, nums: List[List[int]]) -> List[int]:
-        unique_numbers = sorted(set(num for lst in nums for num in lst))
-        max_value = min(lst[-1] for lst in nums)
+        heap = []
+      
+        curr_max = float('-inf')
+        for i in range(len(nums)):
+            heappush(heap,[nums[i][0], i, 0])
+            curr_max = max(curr_max,nums[i][0])
         
-        unique_numbers = [num for num in unique_numbers if num <= max_value]
-        result = [0, math.inf]
-        
-        for left in unique_numbers:
-            min_numbers = []
-            for lst in nums:
-                min_value = min(num for num in lst if num >= left)
-                min_numbers.append(min_value)
-            right = max(min_numbers)
-            
-            if right - left < result[1] - result[0]:
-                result = left, right
-        
-        return result
+        best_max =  curr_max
+        best_min = heap[0][0]
+        while len(heap) == len(nums):
+            val, i, j = heappop(heap)
+            if j+1 >= len(nums[i]):
+                continue
+            next_val = nums[i][j+1]
+            heappush(heap, [next_val,i,j+1])
+            curr_min = heap[0][0]
+            curr_max = max(curr_max,next_val)
+            if curr_max - curr_min < best_max - best_min:
+                best_max = curr_max
+                best_min = curr_min
+        return [best_min, best_max]
