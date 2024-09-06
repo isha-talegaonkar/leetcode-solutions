@@ -12,7 +12,7 @@ class Solution:
         while len(heap) == len(nums):
             val, i, j = heappop(heap)
             if j+1 >= len(nums[i]):
-                continue
+                break
             next_val = nums[i][j+1]
             heappush(heap, [next_val,i,j+1])
             curr_min = heap[0][0]
