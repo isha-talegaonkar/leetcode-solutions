@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return None
+    
         columnTable = defaultdict(list)
         
         queue = deque([(root, 0)])
@@ -22,4 +25,4 @@ class Solution:
                 queue.append((node.left, column-1))
                 queue.append((node.right, column+1))
                 
-        return [columnTable[x] for x in sorted(columnTable.keys())]
+        return [columnTable[x] for x in range(minColumn, maxColumn + 1)]
