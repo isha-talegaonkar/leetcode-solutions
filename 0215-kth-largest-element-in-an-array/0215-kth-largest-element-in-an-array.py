@@ -7,7 +7,4 @@ class Solution:
             if len(heap) > k:
                 heapq.heappop(heap)
         
-        return heap[0]
-        
-#         nums.sort(reverse = True)
-#         return nums[k-1]
+        return heap[0]       
