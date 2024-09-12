@@ -12,12 +12,10 @@ class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
         parents = set()
         
-        parents.add(p)
-        while p.parent is not None:
-            parents.add(p.parent)
+        while p is not None:
+            parents.add(p)
             p = p.parent
         
-        # parents.add(q)
         while q is not None:
             if q in parents:
                 return q
