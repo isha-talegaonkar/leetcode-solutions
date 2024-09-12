@@ -21,4 +21,4 @@ class Solution:
                 return q
             q = q.parent
         
-        return p
+        return 0
