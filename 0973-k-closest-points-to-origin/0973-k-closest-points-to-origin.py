@@ -1,21 +1,20 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        def squaredDistance(point):
+            return point[0] ** 2 + point[1] ** 2
+        
         heap = []
         
-        for x, y in points:
-            distance = x**2 + y**2
-            heap.append([distance, x, y])
-        
+        for i in range(k):
+            heap.append((-squaredDistance(points[i]), i))
         heapq.heapify(heap)
         
-        res = []
-        while k > 0:
-            distance, x, y = heapq.heappop(heap)
-            res.append([x,y])
-            k -= 1
-            
+        for i in range(k, len(points)):
+            distance = -squaredDistance(points[i])
+            if distance > heap[0][0]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, (distance, i))
         
-        return res
-
+        return [points[i] for( _, i) in heap]
+                
         
-            
