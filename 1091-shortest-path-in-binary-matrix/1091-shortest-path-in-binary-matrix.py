@@ -3,8 +3,7 @@ class Solution:
         maxRow = len(grid) - 1
         maxCol = len(grid[0]) - 1
         
-        directions = [
-            (-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        directions = [(1,1), (1,0), (0,1), (0,-1), (-1,0), (-1,1), (1,-1), (-1,-1)]
         
         if grid[0][0] != 0 or grid[maxRow][maxCol] != 0:
             return -1
